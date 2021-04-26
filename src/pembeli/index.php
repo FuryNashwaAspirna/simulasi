@@ -54,6 +54,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
     </div>
 
 
+
     <div class="container">
 
         <div class="card">
@@ -62,7 +63,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
                 <?php while($data = mysqli_fetch_array($query)) : ?>
 
 
-                <a href="" class="card-link">
+                <a href="detail.php?id=<?= $data['id_produk']; ?>" class="card-link">
                     <div class="products" style="background-image: url('foto/<?= $data['image']; ?>')">
                         <div class="products-img">
                             <div class="text-product">
