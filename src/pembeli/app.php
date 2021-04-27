@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-$dbconnect = mysqli_connect('localhost', 'root', '', 'belajar_lsp');
+session_start();
+$dbconnect = mysqli_connect('localhost', 'root', '', 'elektronik');
 
 function queryData($query)
 {
@@ -13,6 +14,3 @@ function queryData($query)
     }
     return $rows;
 }
-
-
-?>

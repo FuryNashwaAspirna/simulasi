@@ -4,11 +4,11 @@ require '../../koneksi.php';
 
 session_start();
 
-if(!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
     die("Anda belum login");
 }
 
-if($_SESSION['role'] !="penjual") {
+if ($_SESSION['role'] != "penjual") {
     die("Anda bukan penjual");
 }
 
@@ -30,7 +30,7 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
 
 <body>
 
-    <h1>Data Produk</h1>
+    <h1>Data Data Produk</h1>
     <a href="tambah_produk.php">Tambah Produk</a>
     <table>
         <tr>
@@ -42,22 +42,20 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
         </tr>
 
         <?php $i = 1; ?>
-        <?php while( $data = mysqli_fetch_array($query)) : ?>
-        <tr>
-            <td><?= $i; ?></td>
-            <td><?= $data['name_produk']; ?></td>
-            <td><img src="foto/<?= $data['image']; ?>" width="80" alt=""></td>
-            <td>Rp <?= number_format($data['price']); ?></td>
-            <td>
-                <a href="edit_produk.php?id=<?= $data['id_produk']; ?>"
-                    style="text-decoration: none; padding: 10px; background: #000; color: #fff;">Edit</a>
+        <?php while ($data = mysqli_fetch_array($query)) : ?>
+            <tr>
+                <td><?= $i; ?></td>
+                <td><?= $data['name_produk']; ?></td>
+                <td><img src="foto/<?= $data['image']; ?>" width="80" alt=""></td>
+                <td>Rp <?= number_format($data['price']); ?></td>
+                <td>
+                    <a href="edit_produk.php?id=<?= $data['id_produk']; ?>" style="text-decoration: none; padding: 10px; background: #000; color: #fff;">Edit</a>
 
-                <a href="hapus_produk.php?id=<?= $data['id_produk']; ?>"
-                    style="text-decoration: none; padding: 10px; background: red; color: #fff;">Hapus</a>
-            </td>
-        </tr>
+                    <a href="hapus_produk.php?id=<?= $data['id_produk']; ?>" style="text-decoration: none; padding: 10px; background: red; color: #fff;">Hapus</a>
+                </td>
+            </tr>
 
-        <?php $i++; ?>
+            <?php $i++; ?>
         <?php endwhile; ?>
 
     </table>

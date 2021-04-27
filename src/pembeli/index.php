@@ -4,11 +4,11 @@ require '../koneksi.php';
 
 session_start();
 
-if(!isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
     die("Anda belum login");
 }
 
-if($_SESSION['role'] !="pembeli") {
+if ($_SESSION['role'] != "pembeli") {
     die("Anda bukan pembeli");
 }
 
@@ -60,21 +60,21 @@ $query = mysqli_query($conn, "SELECT * FROM produk");
         <div class="card">
             <h5 class="text-new-product">New Product</h5>
             <div class="card-product">
-                <?php while($data = mysqli_fetch_array($query)) : ?>
+                <?php while ($data = mysqli_fetch_array($query)) : ?>
 
 
-                <a href="detail.php?id=<?= $data['id_produk']; ?>" class="card-link">
-                    <div class="products" style="background-image: url('foto/<?= $data['image']; ?>')">
-                        <div class="products-img">
-                            <div class="text-product">
-                                <h5><?= $data['name_produk']; ?></h5>
-                                <h6>Rp. <?= number_format($data['price']) ?></h6>
-                            </div>
-                </a>
+                    <a href="detail.php?id=<?= $data['id_produk']; ?>" class="card-link">
+                        <div class="products" style="background-image: url('foto/<?= $data['image']; ?>')">
+                            <div class="products-img">
+                                <div class="text-product">
+                                    <h5><?= $data['name_produk']; ?></h5>
+                                    <h6>Rp. <?= number_format($data['price']) ?></h6>
+                                </div>
+                    </a>
 
             </div>
         </div>
-        <?php endwhile; ?>
+    <?php endwhile; ?>
     </div>
     </div>
     </div>
